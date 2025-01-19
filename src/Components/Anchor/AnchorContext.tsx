@@ -6,9 +6,9 @@ import { convertURL } from '@/utils';
 export const AnchorContext = createContext<AnchorContextType>({});
 
 export function useAnchor(link?: Link): LinkTag {
-	const { LinkElement, ignoreFn } = useContext(AnchorContext);
+	const { LinkElement, ignoreFn } = useContext(AnchorContext); // Получаем из контекста LinkElement и ignoreFn
 	if (link && LinkElement && typeof link === 'string') {
-		if (!ignoreFn || ignoreFn(link)) return LinkElement;
+		if (!ignoreFn || ignoreFn(link)) return LinkElement; // Возвращаем LinkElement, если ignoreFn не блокирует его
 	}
 	return 'a';
 }

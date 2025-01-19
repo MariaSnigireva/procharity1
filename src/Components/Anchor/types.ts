@@ -14,7 +14,7 @@ export type AnchorProviderProps = AnchorContextType & {
 	children: React.ReactNode;
 };
 
-export function AnchorProvider({
+export function AnchorProvider({ // Компонент AnchorProvider, который предоставляет контекст Anchor
 	children,
 	LinkElement,
 	ignoreFn,

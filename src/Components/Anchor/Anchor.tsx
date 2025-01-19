@@ -7,15 +7,16 @@ export type AnchorProps = Omit<
 	AnchorHTMLAttributes<HTMLAnchorElement>,
 	'link'
 > & {
-	link?: Link;
+	link?: Link; // Добавляем опциональный пропс link
 };
 
 export function Anchor({ href, children, ...props }: AnchorProps) { 
-	const LinkElement = useAnchor(href);
-	const propsLink = useLinkProps(href);
+	const LinkElement = useAnchor(href); // Получаем элемент ссылки через кастомный хук useAnchor
+	const propsLink = useLinkProps(href); // Получаем дополнительные пропсы для ссылки через кастомный хук useLinkProps
+
 	return (
-		<LinkElement {...props} {...propsLink}>
-			{children}
+		<LinkElement {...props} {...propsLink}> // Рендерим элемент ссылки с переданными пропсами и дополнительными пропсами
+			{children} // Отображаем дочерние элементы
 		</LinkElement>
 	);
 }
