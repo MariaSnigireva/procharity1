@@ -10,7 +10,7 @@ export type ButtonProps = {
 	variant?: ButtonVariant;
 	disabled?: boolean;
 	waiting?: boolean;
-	onClick?: () => void;
+  onClick?: (event: React.MouseEvent<HTMLElement>) => void; 
 	className?: string;
 	children?: ReactNode;
 	href?: string;
@@ -31,6 +31,17 @@ function withTag(defaultTag: ButtonTag = 'button') {
 	}: ButtonProps) {
 		const TagElement = Tag === 'a' ? Anchor : Tag;
 
+
+		const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+			if (disabled) {
+				event.preventDefault();
+				return;
+			}
+			if (onClick) {
+				onClick(event);
+			}
+		};
+
 		return (
 			<TagElement
 				type={Tag === 'button' ? type : undefined} // Устанавливаем тип, если это кнопка
@@ -41,6 +52,7 @@ function withTag(defaultTag: ButtonTag = 'button') {
 				})}
 				onClick={onClick}
 				disabled={disabled}
+        aria-disabled={disabled}
 			>
 				{waiting && <Icon name="loader" />}
 				{children}
@@ -49,5 +61,5 @@ function withTag(defaultTag: ButtonTag = 'button') {
 	};
 }
 
-export const Button = withTag(); // Кнопка с тегом по умолчанию (button)
-export const ButtonLink = withTag('a'); // Кнопка с тегом 'a' для ссылок
+export const Button = withTag();
+export const ButtonLink = withTag('a');

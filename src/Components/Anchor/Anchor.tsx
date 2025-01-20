@@ -15,8 +15,8 @@ export function Anchor({ href, children, ...props }: AnchorProps) {
 	const propsLink = useLinkProps(href); // Получаем дополнительные пропсы для ссылки через кастомный хук useLinkProps
 
 	return (
-		<LinkElement {...props} {...propsLink}> // Рендерим элемент ссылки с переданными пропсами и дополнительными пропсами
-			{children} // Отображаем дочерние элементы
+		<LinkElement {...props} {...propsLink}>
+			{children}
 		</LinkElement>
 	);
 }

@@ -26,8 +26,9 @@ function withType(
 			isClearable = true,
 			Tag = defaultTag,
 		},
+		ref // Добавляем ref для управления элементами
 	) {
-		const [valueInput, setValueInput] = useState(value); // Локальное состояние для управления значением поля ввода
+		const [valueInput, setValueInput] = useState(value);
 
 		const onInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
 			setValueInput(e.target.value);
@@ -35,43 +36,46 @@ function withType(
 		};
 
 		useEffect(() => {
-			setValueInput(value || ''); // Обновляем локальное состояние, если value изменилось
+			setValueInput(value || '');
 		}, [value]);
 
 		const handleClearClick = () => {
 			setValueInput('');
+			onChange?.({ target: { value: '' } } as ChangeEvent<HTMLInputElement | HTMLTextAreaElement>);
 		};
 
 		const Element = Tag === 'textarea' ? 'textarea' : 'input';
 
-    return (
-      <div className={clsx(styles.container, className)} style={{ width }}>
-        <Element
-          type={Tag === 'input' ? type : undefined}
-          value={valueInput}
-          onChange={onInputChange}
-          className={clsx(styles['input__field'])}
-          name={name}
-          placeholder={placeholder}
-          readOnly={readOnly}
-        />
-        <div className={styles['input__controls']}>
-          {isClearable && (
-            <button
-              type="button"
-              onClick={handleClearClick}
-              className={clsx(styles['input__button'], {
-                [styles.hidden]: !valueInput,
-              })}
-            >
-            </button>
-          )}
-        </div>
-      </div>
-    );
-  });
+		return (
+			<div className={clsx(styles.container, className)} style={{ width }}>
+				<Element
+					ref={ref}
+					type={Tag === 'input' ? type : undefined}
+					value={valueInput}
+					onChange={onInputChange}
+					className={clsx(styles['input__field'])}
+					name={name}
+					placeholder={placeholder}
+					readOnly={readOnly}
+				/>
+				<div className={styles['input__controls']}>
+					{isClearable && (
+						<button
+							type="button"
+							onClick={handleClearClick}
+							className={clsx(styles['input__button'], {
+								[styles.hidden]: !valueInput,
+							})}
+							aria-label="Очистить поле ввода"
+							title="Очистить"
+						>
+						</button>
+					)}
+				</div>
+			</div>
+		);
+	});
 }
-
 
 export const InputText = withType('Введите текст', 'textarea');
 
