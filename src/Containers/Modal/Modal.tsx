@@ -12,10 +12,19 @@ export function Modal({ onClose, children, className }: ModalProps) {
 	return (
 		<div
 			className={clsx(styles.overlay, className)}
-			onClick={(e) => e.stopPropagation()}
+			onClick={onClose}
+			aria-modal="true"
+			role="dialog"
 		>
-			<div className={styles.modal}>
-				<button className={clsx(styles.icon, className)} onClick={onClose}>
+			<div
+				className={styles.modal}
+				onClick={(e) => e.stopPropagation()}
+			>
+				<button 
+					className={clsx(styles.icon, className)} 
+					onClick={onClose}
+					aria-label="Close modal"
+				>
 					<Icon name="close" />
 				</button>
 				{children}

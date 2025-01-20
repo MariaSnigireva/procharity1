@@ -26,11 +26,19 @@ export function Section({
 	return (
 		<section
 			className={clsx(styles.section, styles[variant], className)}
+			aria-labelledby={title ? 'section-title' : undefined}
 		>
 			<div className={clsx(styles.container, containerClassName)}>
 				{image && <div className={styles.image}>{image}</div>}
 				<div className={styles.content}>
-					{title && <Title className={styles.title} Tag={HeaderTag} value={title}></Title>}
+					{title && (
+						<Title 
+							className={styles.title} 
+							Tag={HeaderTag} 
+							value={title} 
+							id="section-title"
+						/>
+					)}
 					{children}
 					{renderAction && (
 						<div className={styles.actionWrapper}>{renderAction()}</div>

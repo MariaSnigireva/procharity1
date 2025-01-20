@@ -8,15 +8,15 @@ type MenuProps = {
 };
 
 export const Menu: React.FC<MenuProps> = ({ className, links }) => {
-  return (
-    <ul className={clsx(className)}>
-      {links.map((link, index) => (
-        <li key={index} className={className}>
-          <Anchor href={link.url} className={clsx(className)}>
-            {link.linkTitle}
-          </Anchor>
-        </li>
-      ))}
-    </ul>
-  );
+	return (
+		<ul className={clsx(className)}>
+			{links.map((link) => (
+				<li key={link.url} className={className}>
+					<Anchor href={link.url} className={clsx(className)}>
+						{link.linkTitle}
+					</Anchor>
+				</li>
+			))}
+		</ul>
+	);
 };

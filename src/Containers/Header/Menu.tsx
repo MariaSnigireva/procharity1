@@ -11,12 +11,15 @@ interface MenuProps {
   items: MenuLink[];
 }
 
+
 export const Menu: FunctionComponent<MenuProps> = ({ items }) => {
   return (
     <ul className={styles.menuContent}>
       {items.map(({ label, href }, index) => (
-        <li key={index} className={styles.link}>
-          <Anchor href={href}>{label}</Anchor>
+        <li key={href} className={styles.link}>
+          <Anchor href={href} aria-label={typeof label === 'string' ? label : undefined}>
+            {label}
+          </Anchor>
         </li>
       ))}
     </ul>

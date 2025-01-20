@@ -49,44 +49,43 @@ export function Footer({
                 <span className={clsx(styles.columnTitle, className)}>
                   {column.columnTitle}
                 </span>
-                {/* Используем компонент Menu для отображения ссылок */}
                 <Menu links={column.links} className={clsx(styles.sectionLinks, className)} />
               </div>
             ))}
           </nav>
   
           <div className={clsx(styles.partners, className)}>
-            {sponsors && (
-              <section className={styles.sponsors}>
-                {sponsors.map((sponsor, index) => (
-                  <Anchor
-                    key={index}
-                    href={sponsor.url}
-                    className={styles.sponsorLink}
-                    aria-label={clsx(sponsor.name, className)}
-                  >
-                    {sponsor.logo}
-                  </Anchor>
-                ))}
-              </section>
+					{sponsors && sponsors.length > 0 && (
+						<section className={styles.sponsors}>
+							{sponsors.map((sponsor) => (
+								<Anchor
+									key={sponsor.url}
+									href={sponsor.url}
+									className={styles.sponsorLink}
+									aria-label={`Sponsor: ${sponsor.name}`}
+								>
+									{sponsor.logo}
+								</Anchor>
+							))}
+						</section>
             )}
   
-            {socialLinks && (
-              <section className={clsx(styles.social, className)}>
-                {socialLinks.map((social, index) => (
-                  <Anchor
-                    key={index}
-                    href={social.url}
-                    className={clsx(styles.socialLink, className)}
-                    aria-label="Social link"
-                  >
-                    {social.icon}
-                    <span className={clsx(styles.socialText, className)}>
-                      {social.name}
-                    </span>
-                  </Anchor>
-                ))}
-              </section>
+          {socialLinks && socialLinks.length > 0 && (
+						<section className={clsx(styles.social, className)}>
+							{socialLinks.map((social) => (
+								<Anchor
+									key={social.url}
+									href={social.url}
+									className={clsx(styles.socialLink, className)}
+									aria-label={`Social link: ${social.name || 'Link'}`}
+								>
+									{social.icon}
+									<span className={clsx(styles.socialText, className)}>
+										{social.name}
+									</span>
+								</Anchor>
+							))}
+						</section>
             )}
           </div>
   
