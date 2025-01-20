@@ -24,7 +24,6 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onSubmit }) => {
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
 
-		// Валидация ввода
 		if (!name || !email || !password || !confirmPassword) {
 			setError('All fields are required.');
 			return;
@@ -35,8 +34,8 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onSubmit }) => {
 			return;
 		}
 
-		setError(''); // Сбросить сообщение об ошибке
-		setIsLoading(true); // Устанавливаем состояние загрузки в true
+		setError('');
+		setIsLoading(true);
 
 		try {
 			await onSubmit(name, email, password, confirmPassword);
