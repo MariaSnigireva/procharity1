@@ -1,4 +1,5 @@
 @use 'variables' as *;
+@use '@styles/fonts/PT-root.css';
 
 :root {
 	font-family: $fontFamily;

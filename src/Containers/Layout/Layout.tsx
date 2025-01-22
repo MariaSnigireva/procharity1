@@ -1,8 +1,8 @@
 import { FunctionComponent, ReactNode } from "react";
 import clsx from "clsx";
-import { Footer, FooterProps } from "./Footer/Footer";
+import { Footer, FooterProps } from "../Footer/Footer";
 import styles from './Layout.scss';
-import { Header, HeaderProps } from "./Header/Header";
+import { Header, HeaderProps } from "../Header/Header";
 
 export type LayoutProps = {
 	className?: string;

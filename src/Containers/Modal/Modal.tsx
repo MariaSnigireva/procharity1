@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import styles from './Modal.scss';
-import { Icon } from "../Icon/Icon";
+import { Icon } from "../../Components/Icon/Icon";
 
 export type ModalProps = {
 	className?: string;

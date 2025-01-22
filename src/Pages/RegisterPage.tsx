@@ -2,7 +2,7 @@ import React from 'react';
 import { Layout } from '../Containers/Layout/Layout';
 import { Section } from '../Containers/Section/Section';
 import { Card } from '../Containers/Card/Card';
-import RegisterForm from '@/Screens/RegisterForm/RegisterForm';
+import RegisterForm from '../Screens/RegisterForm';
 
 
 interface RegisterFormProps {
