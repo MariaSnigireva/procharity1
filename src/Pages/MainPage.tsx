@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Layout } from '../../containers/Layout/Layout';
-import { Section } from '../../containers/Section/Section';
-import { Modal } from '../../containers/Modal/Modal';
-import LoginForm from '../../screens/LoginForm/LoginForm';
-import RegisterForm from '../../screens/RegisterForm/RegisterForm';
-import { Button } from '../../components/Action/Action'; 
+import { Layout } from '../Containers/Layout/Layout';
+import { Section } from '../Containers/Section/Section';
+import { Modal } from '../Containers/Modal/Modal';
+import LoginForm from '../Screens/LoginForm';
+import RegisterForm from '../Screens/RegisterForm';
+import { Button } from '../Components/Action/Action'; 
 
 const MainPage: React.FC = () => {
 	const [isLoginModalOpen, setLoginModalOpen] = useState(false);
