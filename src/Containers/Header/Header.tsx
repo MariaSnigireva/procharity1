@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import clsx from 'clsx';
 import styles from './Header.scss';
-import { Anchor } from '@/Components/Anchor/Anchor';
+import { Anchor } from '@/components/Anchor/Anchor';
 import Menu from './Menu/Menu';
 
 export type MenuLink = {

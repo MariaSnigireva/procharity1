@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import styles from './Footer.scss';
-import { Anchor } from '@/Components/Anchor/Anchor';
+import { Anchor } from '@/components/Anchor/Anchor';
 import Menu from './Menu/Menu';
 
 export interface MenuLink {

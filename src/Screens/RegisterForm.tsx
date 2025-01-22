@@ -1,6 +1,6 @@
-import { Button } from "@/Components/Action/Action";
-import { Field } from "@/Containers/Field/Field";
-import { InputEmail } from "@/Components/Input/Input";
+import { Button } from "@/components/Action/Action";
+import { Field } from "@/containers/Field/Field";
+import { InputEmail } from "@/components/Input/Input";
 import { Input, InputPassword } from "@/ui";
 import { useState } from "react";
 

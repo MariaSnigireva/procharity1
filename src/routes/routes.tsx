@@ -1,6 +1,6 @@
-import MainPage from '@/Pages/MainPage';
-import LoginPage from '@/Pages/LoginPage';
-import RegisterPage from '@/Pages/RegisterPage';
+import MainPage from '@/pages/MainPage';
+import LoginPage from '@/pages/LoginPage';
+import RegisterPage from '@/pages/RegisterPage';
 
 export const routes = [
 	{ index: true, element: <MainPage /> },
