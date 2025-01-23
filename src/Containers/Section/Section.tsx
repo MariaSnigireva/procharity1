@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { Title } from '../components/Typography/Typography';
+import { Title } from '../../components/Typography/Typography';
 
 export type SectionProps = {
 	className?: string;

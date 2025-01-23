@@ -2,6 +2,7 @@ import { Field } from "@/containers/Field/Field";
 import { InputEmail, InputPassword } from "@/components/Input/Input";
 import { Button } from "@/components/Action/Action";
 import { useState } from "react";
+import { Form } from "react-router-dom"; 
 
 export interface LoginFormProps {
 	onSubmit: (email: string, password: string) => Promise<void>; 
@@ -13,7 +14,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
 	const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState('');
 
-	const handleSubmit = async (e: React.FormEvent) => {
+	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
 		if (!email || !password) {
@@ -33,7 +34,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
 	};
 
 	return (
-		<form onSubmit={handleSubmit} aria-label="Login Form">
+		<Form onSubmit={handleSubmit} aria-label="Login Form">
 			<Field>
 				<InputEmail 
 					value={email} 
@@ -52,7 +53,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
 			<Button type="submit" disabled={isLoading}>
 				{isLoading ? "Logging in..." : "Login"}
 			</Button>
-		</form>
+		</Form>
 	);
 };
 

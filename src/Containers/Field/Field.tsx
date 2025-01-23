@@ -1,30 +1,15 @@
 import clsx from 'clsx';
-import { ReactNode, FunctionComponent } from "react";
+import { ReactNode } from "react";
 
 export type FieldProps = {
 	className?: string;
 	children?: ReactNode;
 	label?: string;
-	id?: string;
 };
 
-// Определяем функциональный компонент Field с типом FieldProps
-export const Field: FunctionComponent<FieldProps> = ({
-	className,
-	label,
-	children,
-	id
-}: FieldProps) => {
-	return (
-		<div className={clsx(className)}>
-			{label && (
-				<label className={clsx("label")} htmlFor={id}>
-					{label}
-				</label>
-			)}
-			<div className={clsx("input-container")}>
-				{children}
-			</div>
-		</div>
-	);	
-};
+export function Field({ className, children, label }: FieldProps) {
+	return <label className={clsx(styles.container, className)} data-testid="Field">
+		{label && <span className={styles.label}>{label}</span>}
+		{children}
+	</label>;
+}

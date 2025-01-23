@@ -32,3 +32,20 @@ export function Modal({ onClose, children, className }: ModalProps) {
 		</div>
 	);
 }
+
+export type TriggerProps = {
+	children: ReactElement,
+	modal: ReactElement
+}
+
+export function Trigger({ children, modal }: TriggerProps) {
+	const [isActive, setActive] = useState(false);
+
+	return <>
+		<children.type onClick={() => setActive(true)} {...children.props} />
+		{isActive ? <modal.type {...modal.props} onClose={() => {
+			setActive(false);
+			(modal.props as ModalProps).onClose?.();
+		}} /> : null}
+	</>;
+}

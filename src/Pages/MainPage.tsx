@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Layout } from '../containers/Layout/Layout';
 import { Section } from '../containers/Section/Section';
-import { Modal } from '../containers/Modal/Modal';
+import { Modal, Trigger } from '../containers/Modal/Modal';
 import LoginForm from '../screens/LoginForm';
 import RegisterForm from '../screens/RegisterForm';
 import { Button } from '../components/Action/Action'; 
@@ -21,28 +21,23 @@ const MainPage: React.FC = () => {
 		setRegisterModalOpen(false); 
 	};
 
-	return (
+  return (
 		<Layout>
 			<Section>
-				<Button onClick={() => setLoginModalOpen(true)}>Login</Button>
-				<Button onClick={() => setRegisterModalOpen(true)}>Register</Button>
+				<Trigger
+					modal={<Modal onClose={() => {}}><LoginForm onSubmit={handleLoginSubmit} /></Modal>}
+				>
+					<Button>Login</Button>
+				</Trigger>
+				<Trigger
+					modal={<Modal onClose={() => {}}><RegisterForm onSubmit={handleRegisterSubmit} /></Modal>}
+				>
+					<Button>Register</Button>
+				</Trigger>
 
 				{error && <div role="alert" style={{ color: 'red' }}>{error}</div>}
-
-				{isLoginModalOpen && (
-					<Modal onClose={() => setLoginModalOpen(false)}>
-						<LoginForm onSubmit={handleLoginSubmit} />
-					</Modal>
-				)}
-
-				{isRegisterModalOpen && (
-					<Modal onClose={() => setRegisterModalOpen(false)}>
-						<RegisterForm onSubmit={handleRegisterSubmit} />
-					</Modal>
-				)}
 			</Section>
 		</Layout>
 	);
-};
 
 export default MainPage;
