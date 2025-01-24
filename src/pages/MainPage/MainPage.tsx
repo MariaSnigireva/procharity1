@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Layout } from '../containers/Layout/Layout';
-import { Section } from '../containers/Section/Section';
-import { Modal, Trigger } from '../containers/Modal/Modal';
-import LoginForm from '../screens/LoginForm';
-import RegisterForm from '../screens/RegisterForm';
-import { Button } from '../components/Action/Action'; 
+import { Layout } from '../../containers/Layout/Layout';
+import { Section } from '../../containers/Section/Section';
+import { Modal, Trigger } from '../../containers/Modal/Modal';
+import LoginForm from '../../screens/LoginForm';
+import RegisterForm from '../../screens/RegisterForm';
+import { Button } from '../../components/Action/Action'; 
 
 const MainPage: React.FC = () => {
 	const [error, setError] = useState('');

@@ -1,8 +1,8 @@
 import React from 'react';
-import { Layout } from '../containers/Layout/Layout';
-import { Section } from '../containers/Section/Section';
-import { Card } from '../containers/Card/Card';
-import RegisterForm from '../screens/RegisterForm';
+import { Layout } from '../../containers/Layout/Layout';
+import { Section } from '../../containers/Section/Section';
+import { Card } from '../../containers/Card/Card';
+import RegisterForm from '../../screens/RegisterForm';
 
 
 interface RegisterFormProps {
