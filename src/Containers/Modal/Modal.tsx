@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import styles from './Modal.scss';
 import { Icon } from "../../components/Icon/Icon";
+import { ReactElement, useState } from "react";
 
 export type ModalProps = {
 	className?: string;
@@ -21,7 +22,7 @@ export function Modal({ onClose, children, className }: ModalProps) {
 				onClick={(e) => e.stopPropagation()}
 			>
 				<button 
-					className={clsx(styles.icon, className)} 
+					className={clsx(styles.icon)} 
 					onClick={onClose}
 					aria-label="Close modal"
 				>
@@ -34,18 +35,22 @@ export function Modal({ onClose, children, className }: ModalProps) {
 }
 
 export type TriggerProps = {
-	children: ReactElement,
-	modal: ReactElement
-}
+	children: ReactElement;
+	modal: ReactElement;
+};
 
 export function Trigger({ children, modal }: TriggerProps) {
 	const [isActive, setActive] = useState(false);
 
-	return <>
-		<children.type onClick={() => setActive(true)} {...children.props} />
-		{isActive ? <modal.type {...modal.props} onClose={() => {
-			setActive(false);
-			(modal.props as ModalProps).onClose?.();
-		}} /> : null}
-	</>;
+	const closeModal = () => {
+		setActive(false);
+		(modal.props as ModalProps).onClose?.();
+	};
+
+	return (
+		<>
+			{React.cloneElement(children, { onClick: () => setActive(true) })}
+			{isActive && React.cloneElement(modal, { onClose: closeModal })}
+		</>
+	);
 }

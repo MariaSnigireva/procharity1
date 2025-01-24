@@ -1,9 +1,9 @@
-import MainPage from '@/pages/MainPage';
-import LoginPage from '@/pages/LoginPage';
-import RegisterPage from '@/pages/RegisterPage';
+import main from '@/pages/MainPage/MainPage';
+import login from '@/pages/LoginPage/LoginPage';
+import register from '@/pages/RegisterPage/RegisterPage';
 
 export const routes = [
-	{ index: true, element: <MainPage /> },
-	{ path: '/register', element: <RegisterPage /> },
-	{ path: '/login', element: <LoginPage /> }
+	{ index: true, ...main },
+	{ path: '/login', ...login },
+	{ path: '/register', ...register }
 ];

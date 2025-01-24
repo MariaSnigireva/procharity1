@@ -34,7 +34,6 @@ const RegisterPage: React.FC = () => {
 			<Section>
 				<Card>
 					<RegisterForm onSubmit={handleRegisterSubmit} />
-          {error && <div role="alert" style={{ color: 'red' }}>{error}</div>}
 				</Card>
 			</Section>
 		</Layout>
